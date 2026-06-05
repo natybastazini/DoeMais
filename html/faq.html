@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../dist/output.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="../img/logo.png" type="image/png" />
+    <title>Doe Mais - Saiba Mais</title>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <header class="flex flex-col sticky top-0 z-50 bg-white">
+      <div class="flex justify-between items-center p-4">
+        <!-- Logo -->
+        <div class="flex flex-row items-end">
+          <img
+            class="w-28 h-28"
+            src="../img/logo.png"
+            alt="Gota de Sangue com um mais no meio e sinal de batimento cardiáco."
+          />
+          <p class="flex items-end font-agbalumo text-red-1 pb-2">
+            <span class="text-base">Doe</span>
+            <span class="text-sm translate-y-1">+</span>
+          </p>
+        </div>
+        <!-- Navegação -->
+        <ul
+          class="flex flex-row gap-4 font-inter text-gray-1 font-light w-2/5 h-full justify-evenly items-center"
+        >
+          <li class="cursor-pointer hover:text-red-1">
+            <a href="./faq.html">Saiba mais</a>
+          </li>
+          <li class="cursor-pointer hover:text-red-1">
+            <a href="./mapa.html">Mapa</a>
+          </li>
+          <!-- <li class="cursor-pointer hover:text-red-1"></li>
+          <li class="cursor-pointer hover:text-red-1"></li> -->
+        </ul>
+        <!-- Botão cadastro -->
+        <div id="area-usuario-faq">
+          <a href="./cadastro.html">
+          <button
+            class="font-inter font-semibold bg-white text-red-1 border-2 border-red-1 w-32 h-8 rounded-4xl transition-all duration-500 hover:text-white hover:bg-red-1 cursor-pointer"
+          >
+            Quero doar!
+          </button>
+        </a>
+        </div>
+      </div>
+      <hr class="opacity-30 shrink-0 w-full" />
+    </header>
+    <main class="flex flex-col pt-10 gap-10 ">
+      <div class="flex flex-col justify-center items-center font-inter gap-10">
+        <!-- Texto informativo 1 -->
+        <h1 class="text-6xl font-semibold text-red-1">Doação de Sangue</h1>
+        <div class="w-7xl text-xl font-inter text-gray-3 font-medium">
+          <p>
+            Doar sangue salva vidas. Esse gesto simples e rápido pode fazer toda
+            a diferença para pessoas que precisam de transfusões em situações de
+            emergência, cirurgias ou tratamentos de saúde. Ao doar, você oferece
+            uma nova chance para alguém continuar vivendo, mostrando
+            solidariedade e cuidado com o próximo.
+          </p>
+          <br />
+          <p>
+            Doar sangue salva vidas. Esse gesto simples e rápido pode fazer toda
+            a diferença para pessoas que precisam de transfusões em situações de
+            emergência, cirurgias ou tratamentos de saúde. Ao doar, você oferece
+            uma nova chance para alguém continuar vivendo, mostrando
+            solidariedade e cuidado com o próximo.
+          </p>
+          <br />
+          <p>
+            Ser doador é ajudar a salvar vidas, já que uma única doação pode
+            beneficiar mais de uma pessoa, tornando essencial a doação regular
+            para manter os estoques.
+          </p>
+        </div>
+      </div>
+      <!-- Quero doar -->
+      <div class="flex flex-col justify-center items-center gap-10">
+        <h2 class="w-7xl text-red-1 font-semibold text-3xl">Quero doar</h2>
+        <p class="w-7xl text-xl font-inter text-gray-3 font-medium">
+          Para doar sangue, é preciso atender a requisitos básicos, em um
+          processo simples, rápido e seguro, realizado por profissionais
+          capacitados.
+        </p>
+      </div>
+      <!-- Seção com cards informativos sobre requisitos para doação de sangue -->
+      <div class="flex flex-col w-full bg-red-1 pt-14 pb-14 pl-6 pr-6 gap-10">
+        <div class="flex w-full justify-center">
+          <!-- Título dos Requisitos -->
+          <h2 class="font-bold text-4xl text-white">
+            Requisitos para ser um doador de sangue
+          </h2>
+        </div>
+        <!-- Requisitos -->
+        <section class="grid grid-cols-4 justify-items-center gap-10 w-full bg-red-1">
+          <div
+            class="flex flex-col justify-evenly items-center w-48 h-48 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/idade.png" alt="silhuetas de pessoas em ordem de tamanho" />
+            <p class="font-inter font-semibold text-gray-1 text-center">
+              Ter entre 16 e 69 anos
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-48 h-48 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/balanca.png" alt="balança" />
+            <p class="font-inter font-semibold text-gray-1 text-center">
+              Pesar mais de 50kg
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-48 h-48 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/boa_condicao_de_saude.png" alt="" />
+            <p class="font-inter font-semibold text-gray-1 text-center">
+              Ter boa condições de saúde
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-48 h-48 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/documento_oficial.png" alt="" />
+            <p class="font-inter font-semibold text-gray-1 text-center">
+              Apresentar documento oficial (com foto)
+            </p>
+          </div>
+          <!-- ******************GATO***************** -->
+           <div
+            class="flex flex-col justify-evenly items-center w-48 h-48 p-2 bg-transparent "
+          >
+          </div>
+          <!-- *******************GATO**************** -->
+          <div
+            class="flex flex-col justify-evenly items-center w-48 h-48 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/alimentacao_saudavel.png" alt="" />
+            <p class="font-inter font-semibold text-gray-1 text-center">
+              Estar bem alimentado
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-48 h-48 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/sono.png" alt="" />
+            <p class="font-inter font-semibold text-gray-1 text-center">
+              Ter dormido bem a noite anterior (6 horas)
+            </p>
+          </div>
+        </section>
+      </div>
+      <!-- Cards informativos sobre o intervalo de tempo entre doações por gênero -->
+      <section class="flex flex-col h- w-full gap-14 pb-20">
+        <h2 class="text-center font-inter text-4xl text-red-1 font-bold">O doador deve respeitar os intervalos entre doações</h2>
+        <div class="flex flex-row justify-evenly">
+          <div class="flex flex-col items-center justify-center gap-4 bg-white border-2 border-red-1 w-64 rounded-2xl p-4 shadow-lg/15">
+          <h3 class="font-semibold text-gray-1 text-2xl">MULHERES</h3>
+          <img src="../img/mulheres.png" alt="simbolo espelho de vênus">
+          <h3 class="font-normal text-gray-1 text-2xl">Intervalo de 90 dias </h3>
+        </div>
+        <div class="flex flex-col items-center justify-center gap-4 bg-white border-2 border-red-1 w-64 rounded-2xl p-4 shadow-lg/15">
+          <h3 class="font-semibold text-gray-1 text-2xl">HOMENS</h3>
+          <img src="../img/homens.png" alt="simbolo de venus">
+          <h3 class="font-normal text-gray-1 text-2xl">Intervalo de 60 dias </h3>
+        </div>
+      </section>
+      <!-- seção de conteúdos sobre quem não pode doar -->
+      <div class=" flex w-full justify-center">
+        <section class="w-7xl flex">
+          <div class="flex flex-col gap-10">
+            <h2 class="text-red-1 text-3xl font-inter font-semibold">Quem não pode doar?</h2>
+            <p class="text-xl font-inter text-gray-3">Existem fatores que podem impedir a doação sangue. Conhecê-los é essencial para garantir que o processo seja seguro, protegendo a saúde de quem doa e de quem recebe.</p>
+            <p class="text-xl font-inter text-gray-3">As <span class="text-red-1">restrições temporárias</span> aplicam-se a qualquer situação que possa afetar temporariamente a saúde do doador ou a qualidade do sangue coletado. O <span class="text-red-1"> tempo de espera depende da condição específica e é definido pelo serviço de hemoterapia.</span></p>
+          </div>
+        </section>
+      </div>
+      <!-- Seção com cards informativos sobre restrições temporárias para doação de sangue -->
+      <div class="flex flex-col w-full bg-red-1 pt-14 pb-14 pl-6 pr-6 gap-10">
+        <div class="flex w-full justify-center">
+          <!-- Título das restrições temporárias -->
+          <h2 class="font-bold text-4xl text-white">
+            Restrições temporárias para ser um doador de sangue
+          </h2>
+        </div>
+        <!-- Cards das restrições temporárias -->
+        <section class="grid grid-cols-4 justify-items-center gap-8 w-full">
+          <div
+            class="flex flex-col justify-evenly items-center w-44 h-44 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/gravida.png" alt="grávida" />
+            <p class="font-inter font-semibold text-red-1 text-center text-sm">
+              Estar grávida ou amamentando
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-44 h-44 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/bebida.png" alt="drink" />
+            <p class="font-inter font-semibold text-red-1 text-center text-sm">
+              Ter consumido bebidas alcoólicas (12h).
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-44 h-44 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/doente.png" alt="pessoa com febre" />
+            <p class="font-inter font-semibold text-red-1 text-center text-sm">
+              Gripe, resfriado ou febre.
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-44 h-44 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-3/4 h-2/4" src="../img/piercing_tatto.png" alt="piercing e tatuagem" />
+            <p class="font-inter font-semibold text-red-1 text-center text-sm">
+              Tatuagem e Piercing <br> (6 meses)
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-44 h-44 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/vacina.png" alt="vacina" />
+            <p class="font-inter font-semibold text-red-1 text-center text-sm">
+              Vacina
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-44 h-44 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/medicamento.png" alt="medicamento/remédio" />
+            <p class="font-inter font-semibold text-red-1 text-center text-sm">
+              Uso de certos medicamentos.
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-44 h-44 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/cirurgia.png" alt="cirurgia" />
+            <p class="font-inter font-semibold text-red-1 text-center text-sm">
+              Cirurgias (6 meses).
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-44 h-44 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/endoscopia.png" alt="endoscopia" />
+            <p class="font-inter font-semibold text-red-1 text-center text-sm">
+              Endoscopia ou exames envasivos.
+            </p>
+          </div>
+        </section>
+      </div>
+      <!-- Texto informativo sobre restrições permanentes -->
+      <div class="flex w-full justify-center">
+        <div class="flex w-7xl">
+          <p class="text-xl font-inter text-gray-3">As <span class="text-red-1">restrições permanentes</span> são aplicadas quando existe risco definitivo de transmissão de doenças pelo sangue. Nesses casos, <span class="text-red-1"> a pessoa não poderá doar em nenhum momento.</span> </p>
+        </div>
+      </div>
+      <!-- Seção com cards informativos sobre restrições permanetes para doação de sangue -->
+      <div class="flex flex-col w-full bg-red-1 pt-14 pb-14 pl-6 pr-6 gap-10">
+        <div class="flex w-full justify-center">
+          <!-- Título das restrições temporárias -->
+          <h2 class="font-bold text-4xl text-white">
+            Restrições permanentes para ser um doador de sangue
+          </h2>
+        </div>
+        <!-- Cards das restrições temporárias -->
+        <section class="grid grid-cols-4 justify-items-center gap-8 w-full">
+          <div
+            class="flex flex-col justify-evenly items-center w-44 h-44 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/transmissiveis_pelo_sangue.png" alt="doenças transmissíveis pelo sangue" />
+            <p class="font-inter font-semibold text-red-1 text-center text-sm">
+              Doenças transmissíveis pelo sangue.
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-44 h-44 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/drogas.png" alt="drogas" />
+            <p class="font-inter font-semibold text-red-1 text-center text-sm">
+              Uso de drogas.
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-44 h-44 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/doenca_grave.png" alt="condições de sáude graves" />
+            <p class="font-inter font-semibold text-red-1 text-center text-sm">
+              Algumas condições de saúde graves.
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-44 h-44 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/transplante.png" alt="transplante" />
+            <p class="font-inter font-semibold text-red-1 text-center text-sm">
+              Ter feito transplante de órgãos ou tecidos específicos.
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-44 h-44 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/problemas_hematologicos.png" alt="problemas hematológicos" />
+            <p class="font-inter font-semibold text-red-1 text-center text-sm">
+              Problemas hematológicos.
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-44 h-44 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/exame_sorologicos_positivos.png" alt="exame de histórico" />
+            <p class="font-inter font-semibold text-red-1 text-center text-sm">
+              Histórico de exames sorológicos positivos.
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-44 h-44 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/infeccoes__cronicas.png" alt="infecções crônicas específicas" />
+            <p class="font-inter font-semibold text-red-1 text-center text-sm">
+              Infecções crônicas específicas.
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-evenly items-center w-44 h-44 p-2 bg-white rounded-4xl shadow-lg/40"
+          >
+            <img class="w-2/4 h-2/4" src="../img/doencas_neorologicas_raras.png" alt="doença neurológicas infecciosas" />
+            <p class="font-inter font-semibold text-red-1 text-center text-sm">
+              Doenças neurológicas infecciosas raras.
+            </p>
+          </div>
+        </section>
+      </div>
+     <!-- Seção Tipos Sanguíneos e Compatibilidade -->
+<div class="flex w-full justify-center mt-10">
+  <div class="flex flex-col w-7xl gap-6">
+    <h2 class="text-red-1 text-3xl font-inter font-semibold">Tipos sanguíneos e compatibilidade</h2>
+    <p class="text-xl font-inter text-gray-3">O sangue humano é classificado pelo sistema ABO e fator Rh. Conhecer seu tipo sanguíneo é essencial para saber quem você pode ajudar com sua doação.</p>
+  </div>
+</div>
+
+<!-- Card -->
+<div class="flex w-full justify-center px-6 pb-20">
+  <div class="w-full border-2 border-red-1 rounded-2xl p-10 flex flex-col gap-8">
+
+    <h2 class="font-bold text-4xl text-red-1 text-center">Compatibilidade entre tipos sanguíneos</h2>
+
+    <div class="flex justify-center gap-4">
+      <button id="btn-recebe" onclick="switchTab('recebe')"
+        class="font-inter font-semibold border-2 border-red-1 text-white bg-red-1 w-56 h-10 rounded-full transition-all duration-300 cursor-pointer">
+        De quem posso receber?
+      </button>
+      <button id="btn-doa" onclick="switchTab('doa')"
+        class="font-inter font-semibold border-2 border-red-1 text-red-1 bg-white w-56 h-10 rounded-full transition-all duration-300 cursor-pointer">
+        Para quem posso doar?
+      </button>
+    </div>
+
+    <section id="grid-recebe" class="grid grid-cols-4 justify-items-center gap-8 w-full"></section>
+    <section id="grid-doa" class="grid grid-cols-4 justify-items-center gap-8 w-full"></section>
+
+    <p class="text-center text-gray-1 text-sm font-bold">* O- é doador universal &nbsp;·&nbsp; AB+ é receptor universal</p>
+
+  </div>
+</div>
+<!-- Seção Curiosidades -->
+<div class="flex w-full justify-center mt-4">
+  <div class="flex flex-col w-7xl gap-6 pb-20">
+    <h2 class="text-red-1 text-3xl font-inter font-semibold">Curiosidades</h2>
+    <p class="text-xl font-inter text-gray-3">Uma única doação pode salvar até <span class="text-red-1">4 vidas</span>, pois o sangue é separado em componentes — hemácias, plaquetas e plasma — cada um beneficiando um paciente diferente.</p>
+    <p class="text-xl font-inter text-gray-3">O corpo <span class="text-red-1">repõe o volume de líquido em até 24 horas</span>. As células vermelhas levam entre 4 a 8 semanas para se recuperar completamente.</p>
+    <p class="text-xl font-inter text-gray-3">Apenas <span class="text-red-1">1,8% dos brasileiros doam sangue</span>. A OMS recomenda que pelo menos 3% da população seja doadora para suprir as necessidades dos bancos de sangue.</p>
+    <p class="text-xl font-inter text-gray-3">A coleta dura cerca de <span class="text-red-1">10 minutos</span>. Considerando cadastro e triagem, a visita completa ao hemocentro leva em média 40 a 60 minutos.</p>
+    <p class="text-xl font-inter text-gray-3">O sangue tem <span class="text-red-1">prazo de validade</span>: hemácias duram até 42 dias e plaquetas apenas 5 dias. Por isso a doação regular é essencial.</p>
+    <p class="text-xl font-inter text-gray-3">Ao doar, o doador recebe <span class="text-red-1">exames gratuitos</span> como tipagem sanguínea e testes para hepatite, HIV e outras doenças.</p>
+  </div>
+</div>
+
+    </main>
+    <!-- Rodapé -->
+    <footer class="flex h-10 bg-red-1 rounded-t-xl justify-center items-center shrink-0">
+      <p class="font-inter font-thin text-white text-xs text-center px-4">
+        &copy; Doe+ By Mateus de Alcantara, Natália Bastazini, Victor Vicentini e Thiago do Anjos
+      </p>
+    </footer>
+    
+  <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+  <script src="../js/faq.js"></script>
+  <script>
+    initFaq();
+    initCompatibilidade();
+  </script>
+  </body>
+</html>
