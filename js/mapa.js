@@ -1,3 +1,8 @@
+// ── Proteção de rota (sem token → manda pro login) ──
+if (!localStorage.getItem("token")) {
+  window.location.href = "./login.html";
+}
+
 // =============================================
 // DOE+ — Mapa de Hemocentros com Leaflet.js
 // Gratuito, sem API key — usa OpenStreetMap
@@ -523,6 +528,8 @@ function initMap() {
 // ── Carrega Leaflet dinamicamente ─────────────
 
 document.addEventListener("DOMContentLoaded", () => {
+  initFaq(); // header igual ao faq.html (avatar/foto de perfil quando logado)
+
   const link = document.createElement("link");
   link.rel = "stylesheet";
   link.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";

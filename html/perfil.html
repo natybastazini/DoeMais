@@ -15,230 +15,320 @@
     <link rel="icon" href="../img/logo.png" type="image/png" />
     <title>Doe Mais - Perfil</title>
     <style>
-      .badge-tipo {
-        background: #c0392b;
-        color: #fff;
-        font-family: 'Inter', sans-serif;
-        font-weight: 700;
-        font-size: 1rem;
-        width: 3rem;
-        height: 3rem;
-        border-radius: 50%;
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(2px);
+        z-index: 100;
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-shrink: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s;
       }
-      .card-info {
-        border: 1.5px solid #f0f0f0;
-        border-radius: 1rem;
-        padding: 1.25rem 1.5rem;
-        background: #fff;
-        box-shadow: 0 2px 12px rgba(0,0,0,.05);
+      .modal-overlay.open {
+        opacity: 1;
+        pointer-events: all;
       }
-      .card-info label {
-        font-size: 0.68rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: .07em;
-        color: #c0392b;
-        font-family: 'Inter', sans-serif;
+      .modal-box {
+        background: white;
+        border-radius: 1.5rem;
+        padding: 2rem;
+        width: 90%;
+        max-width: 680px;
+        max-height: 90vh;
+        overflow-y: auto;
+        transform: translateY(20px);
+        transition: transform 0.25s;
       }
-      .card-info p {
-        font-size: .95rem;
-        color: #222;
-        font-family: 'Inter', sans-serif;
-        margin-top: 2px;
-      }
-      .doacao-item {
-        border-left: 3px solid #c0392b;
-        border-radius: 0 .6rem .6rem 0;
-        background: #fafafa;
-        padding: .7rem 1rem;
-        font-family: 'Inter', sans-serif;
+      .modal-overlay.open .modal-box {
+        transform: translateY(0);
       }
     </style>
   </head>
-
-  <body class="flex flex-col min-h-screen bg-gray-50">
-
-    <!-- ── Header (mesmo do index) ── -->
-    <header class="flex w-full justify-between items-center px-10 py-4 bg-white">
-      <a href="../index.html" class="flex flex-row items-end">
-        <img
-          class="w-28 h-28"
-          src="../img/logo.png"
-          alt="Gota de Sangue com um mais no meio e sinal de batimento cardíaco."
-        />
-        <p class="flex items-end font-agbalumo text-red-1 pb-2">
-          <span class="text-base">Doe</span>
-          <span class="text-sm translate-y-1">+</span>
-        </p>
-      </a>
-
-      <!-- Botão sair -->
-      <button
-        onclick="logout()"
-        class="font-inter font-semibold bg-white text-red-1 border-2 border-red-1 w-32 h-8 rounded-4xl transition-all duration-500 hover:text-white hover:bg-red-1 cursor-pointer"
-      >
-        Sair
-      </button>
+  <body class="flex flex-col h-screen bg-gray-50 overflow-hidden">
+    <header class="flex flex-col shrink-0 sticky top-0 z-50 bg-white">
+      <div class="flex justify-between items-center p-4">
+        <div class="flex flex-row items-end">
+          <a href="../index.html" class="flex flex-row items-end">
+            <img class="w-28 h-28" src="../img/logo.png" alt="Logo" />
+            <p class="flex items-end font-agbalumo text-red-1 pb-2">
+              <span class="text-base">Doe</span>
+              <span class="text-sm translate-y-1">+</span>
+            </p>
+          </a>
+        </div>
+        <ul
+          class="flex flex-row gap-4 font-inter text-gray-1 font-light w-2/5 h-full justify-evenly items-center"
+        >
+          <li class="cursor-pointer hover:text-red-1">
+            <a href="./faq.html">Saiba mais</a>
+          </li>
+          <li class="cursor-pointer hover:text-red-1">
+            <a href="./mapa.html">Mapa</a>
+          </li>
+        </ul>
+        <div id="area-usuario-faq">
+          <a href="./cadastro.html">
+            <button
+              class="font-inter font-semibold bg-white text-red-1 border-2 border-red-1 w-32 h-8 rounded-4xl transition-all duration-500 hover:text-white hover:bg-red-1 cursor-pointer"
+            >
+              Quero doar!
+            </button>
+          </a>
+        </div>
+      </div>
+      <hr class="opacity-30 shrink-0 w-full" />
     </header>
 
-    <!-- ── Main ── -->
-    <main class="flex flex-1 justify-evenly items-start px-10 py-8 gap-8 flex-wrap">
-
-      <!-- Coluna esquerda: avatar + tipo sanguíneo -->
-      <div class="flex flex-col items-center justify-center gap-4 w-1/4 min-w-[200px] pt-6">
-        <!-- Avatar -->
-        <div class="w-32 h-32 rounded-full border-4 border-red-1 overflow-hidden bg-white flex items-center justify-center shadow-md">
-          <img
-            id="avatar-img"
-            src="../img/logo.png"
-            alt="Foto de perfil"
-            class="w-full h-full object-cover"
-          />
+    <main class="flex flex-1 justify-center items-center px-4 overflow-hidden">
+      <div style="width: 70%">
+        <div class="text-center mb-4">
+          <h1 class="text-3xl font-bold font-inter text-gray-1">
+            Meu <span class="text-red-1">Perfil</span>
+          </h1>
+          <p class="font-inter text-gray-3 mt-1 text-sm">
+            Gerencie suas informações de doador
+          </p>
         </div>
 
-        <!-- Nome -->
-        <h1 id="perfil-nome" class="font-inter font-semibold text-gray-1 text-xl text-center">
-          —
-        </h1>
+        <div
+          class="bg-white rounded-3xl shadow-md border border-gray-200 p-6 flex flex-col gap-3"
+        >
+          <h3 class="font-inter font-semibold text-gray-1 text-base">
+            Informações
+          </h3>
 
-        <!-- Badge tipo sanguíneo -->
-        <div class="badge-tipo text-lg" id="perfil-tipo">—</div>
+          <div class="grid grid-cols-2 gap-3 text-sm font-inter">
+            <div class="col-span-2">
+              <span class="text-xs font-semibold text-gray-3 ml-1">Nome</span>
+              <div
+                id="v-nome"
+                class="mt-0.5 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 text-gray-1"
+              >
+                —
+              </div>
+            </div>
+            <div class="col-span-2">
+              <span class="text-xs font-semibold text-gray-3 ml-1">E-mail</span>
+              <div
+                id="v-email"
+                class="mt-0.5 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 text-gray-1"
+              >
+                —
+              </div>
+            </div>
+            <div>
+              <span class="text-xs font-semibold text-gray-3 ml-1"
+                >Data de nascimento</span
+              >
+              <div
+                id="v-data"
+                class="mt-0.5 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 text-gray-1"
+              >
+                —
+              </div>
+            </div>
+            <div>
+              <span class="text-xs font-semibold text-gray-3 ml-1">Sexo</span>
+              <div
+                id="v-sexo"
+                class="mt-0.5 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 text-gray-1"
+              >
+                —
+              </div>
+            </div>
+            <div>
+              <span class="text-xs font-semibold text-gray-3 ml-1">CPF</span>
+              <div
+                id="v-cpf"
+                class="mt-0.5 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 text-gray-1"
+              >
+                —
+              </div>
+            </div>
+            <div>
+              <span class="text-xs font-semibold text-gray-3 ml-1"
+                >Tipo sanguíneo</span
+              >
+              <div
+                id="v-tipo"
+                class="mt-0.5 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 text-gray-1"
+              >
+                —
+              </div>
+            </div>
+          </div>
 
-        <!-- Botão ver mapa -->
-        <a href="./mapa.html" class="mt-2">
-          <button
-            class="font-inter font-semibold bg-white text-red-1 border-2 border-red-1 w-36 h-8 rounded-4xl transition-all duration-500 hover:text-white hover:bg-red-1 cursor-pointer text-sm"
+          <div
+            class="flex justify-between items-center mt-2 pt-2 border-t border-gray-100"
           >
-            Ver hemocentros
-          </button>
-        </a>
-      </div>
-
-      <!-- Coluna direita: dados + histórico -->
-      <div class="flex flex-col gap-5 w-1/2 min-w-[300px]">
-
-        <!-- Dados pessoais -->
-        <div class="card-info flex flex-col gap-4">
-          <h2 class="font-inter font-semibold text-gray-1 text-base">Dados pessoais</h2>
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label>E-mail</label>
-              <p id="perfil-email">—</p>
-            </div>
-            <div>
-              <label>CPF</label>
-              <p id="perfil-cpf">—</p>
-            </div>
-            <div>
-              <label>Data de nascimento</label>
-              <p id="perfil-nascimento">—</p>
-            </div>
-            <div>
-              <label>Sexo</label>
-              <p id="perfil-sexo">—</p>
-            </div>
+            <button
+              id="btn-sair"
+              type="button"
+              class="text-gray-3 text-xs font-inter hover:text-red-1 underline cursor-pointer"
+            >
+              Sair da conta
+            </button>
+            <button
+              id="btn-editar"
+              type="button"
+              class="inline-flex items-center gap-2 border-2 border-red-1 text-red-1 font-inter font-semibold rounded-full px-5 py-1.5 text-sm transition-all duration-300 hover:bg-red-1 hover:text-white cursor-pointer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-4 h-4"
+              >
+                <path
+                  d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z"
+                />
+              </svg>
+              Editar
+            </button>
           </div>
         </div>
-
-        <!-- Histórico de doações -->
-        <div class="card-info flex flex-col gap-3">
-          <div class="flex justify-between items-center">
-            <h2 class="font-inter font-semibold text-gray-1 text-base">Histórico de doações</h2>
-            <span id="total-doacoes" class="font-inter text-xs font-semibold text-red-1 border border-red-1 rounded-full px-3 py-0.5">
-              0 doações
-            </span>
-          </div>
-          <div id="lista-doacoes" class="flex flex-col gap-2">
-            <p class="text-sm text-gray-400 font-inter text-center py-4">Carregando...</p>
-          </div>
-        </div>
-
       </div>
     </main>
 
-    <!-- ── Rodapé (mesmo do index) ── -->
-    <footer class="flex bg-red-1 rounded-t-xl justify-center items-center py-3 mt-4">
-      <p class="font-inter font-thin text-white text-xs text-center">
-        &copy; Doe Mais &mdash; Mateus Alcantara, Natália Bastazini, Thiago dos Anjos e Victor Vicentini
-      </p>
-    </footer>
+    <!-- MODAL -->
+    <div id="modal-overlay" class="modal-overlay">
+      <div class="modal-box">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="font-inter font-bold text-gray-1 text-lg">
+            Editar Perfil
+          </h2>
+          <button
+            id="btn-fechar-modal"
+            class="text-gray-3 hover:text-red-1 cursor-pointer text-2xl font-bold leading-none"
+          >
+            &times;
+          </button>
+        </div>
+
+        <div
+          id="perfil-msg"
+          class="hidden rounded-2xl px-4 py-2 text-sm font-inter mb-3"
+        ></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm font-inter">
+          <div class="md:col-span-2">
+            <label class="block text-xs font-semibold text-gray-3 mb-1 ml-1"
+              >Nome</label
+            >
+            <input
+              id="f-nome"
+              type="text"
+              class="w-full rounded-2xl border-2 border-gray-2 bg-white px-4 py-2.5 text-gray-1 text-sm font-inter outline-none focus:border-red-1"
+            />
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-xs font-semibold text-gray-3 mb-1 ml-1"
+              >E-mail</label
+            >
+            <input
+              id="f-email"
+              type="email"
+              class="w-full rounded-2xl border-2 border-gray-2 bg-white px-4 py-2.5 text-gray-1 text-sm font-inter outline-none focus:border-red-1"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-3 mb-1 ml-1"
+              >Data de nascimento</label
+            >
+            <input
+              id="f-data"
+              type="date"
+              class="w-full rounded-2xl border-2 border-gray-2 bg-white px-4 py-2.5 text-gray-1 text-sm font-inter outline-none focus:border-red-1"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-3 mb-1 ml-1"
+              >Sexo</label
+            >
+            <select
+              id="f-sexo"
+              class="w-full rounded-2xl border-2 border-gray-2 bg-white px-4 py-2.5 text-gray-1 text-sm font-inter outline-none focus:border-red-1 cursor-pointer"
+            >
+              <option value="">—</option>
+              <option value="M">Masculino</option>
+              <option value="F">Feminino</option>
+              <option value="O">Outro</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-3 mb-1 ml-1"
+              >CPF</label
+            >
+            <input
+              id="f-cpf"
+              type="text"
+              maxlength="14"
+              class="w-full rounded-2xl border-2 border-gray-2 bg-white px-4 py-2.5 text-gray-1 text-sm font-inter outline-none focus:border-red-1"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-3 mb-1 ml-1"
+              >Tipo sanguíneo</label
+            >
+            <select
+              id="f-tipo"
+              class="w-full rounded-2xl border-2 border-gray-2 bg-white px-4 py-2.5 text-gray-1 text-sm font-inter outline-none focus:border-red-1 cursor-pointer"
+            >
+              <option value="">—</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="NAO_SEI">Não sei informar</option>
+            </select>
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-xs font-semibold text-gray-3 mb-1 ml-1"
+              >Senha</label
+            >
+            <input
+              id="f-senha"
+              type="password"
+              placeholder="Nova senha (deixe em branco para manter)"
+              class="w-full rounded-2xl border-2 border-gray-2 bg-white px-4 py-2.5 text-gray-1 text-sm font-inter outline-none focus:border-red-1"
+            />
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-3 mt-5">
+          <button
+            id="btn-cancelar"
+            type="button"
+            class="text-gray-3 font-inter text-sm hover:text-red-1 cursor-pointer"
+          >
+            Cancelar
+          </button>
+          <button
+            id="btn-salvar"
+            type="button"
+            class="inline-flex items-center gap-2 bg-red-1 border-2 border-red-1 text-white font-inter font-semibold rounded-full px-6 py-1.5 text-sm transition-all duration-300 hover:bg-red-2 hover:border-red-2 cursor-pointer"
+          >
+            Salvar
+          </button>
+        </div>
+      </div>
+    </div>
 
     <script src="../js/api.js"></script>
     <script src="../js/auth.js"></script>
-    <script>
-      function formatarCPF(cpf) {
-        if (!cpf) return "—";
-        return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-      }
-      function formatarData(data) {
-        if (!data) return "—";
-        const [ano, mes, dia] = data.split("-");
-        return `${dia}/${mes}/${ano}`;
-      }
-      function sexoLabel(s) {
-        return { M: "Masculino", F: "Feminino", O: "Outro" }[s] || s;
-      }
-
-      function preencherPerfil(u) {
-        document.getElementById("perfil-nome").textContent       = u.nome || "—";
-        document.getElementById("perfil-email").textContent      = u.email || "—";
-        document.getElementById("perfil-cpf").textContent        = formatarCPF(u.cpf);
-        document.getElementById("perfil-nascimento").textContent = formatarData(u.data_nascimento);
-        document.getElementById("perfil-sexo").textContent       = sexoLabel(u.sexo);
-        document.getElementById("perfil-tipo").textContent       = u.tipo_sanguineo !== "NAO_SEI" ? u.tipo_sanguineo : "?";
-        if (u.foto) document.getElementById("avatar-img").src = u.foto;
-      }
-
-      function renderizarDoacoes(doacoes) {
-        const lista = document.getElementById("lista-doacoes");
-        const total = document.getElementById("total-doacoes");
-        total.textContent = `${doacoes.length} ${doacoes.length === 1 ? "doação" : "doações"}`;
-
-        if (!doacoes.length) {
-          lista.innerHTML = `
-            <div class="flex flex-col items-center gap-1 py-4 text-gray-400">
-              <span style="font-size:1.5rem">🩸</span>
-              <p class="text-sm font-inter">Nenhuma doação registrada ainda.</p>
-            </div>`;
-          return;
-        }
-
-        lista.innerHTML = doacoes.map(d => `
-          <div class="doacao-item">
-            <p class="font-semibold text-gray-800 text-sm">${formatarData(d.data_doacao)}</p>
-            <p class="text-xs text-gray-400">Hemocentro #${d.hemocentro_id}</p>
-            ${d.observacoes ? `<p class="text-xs text-gray-500 mt-1">${d.observacoes}</p>` : ""}
-          </div>`).join("");
-      }
-
-      async function initPerfil() {
-        if (!getToken()) { window.location.href = "./login.html"; return; }
-
-        const cache = localStorage.getItem("usuario");
-        if (cache) preencherPerfil(JSON.parse(cache));
-
-        try {
-          const res = await fetch(API_URL + "/usuarios/me", { headers: authHeader() });
-          if (res.status === 401) { logout(); return; }
-          const u = await res.json();
-          localStorage.setItem("usuario", JSON.stringify(u));
-          preencherPerfil(u);
-        } catch (_) {}
-
-        try {
-          const res = await fetch(API_URL + "/doacoes/", { headers: authHeader() });
-          if (res.ok) renderizarDoacoes(await res.json());
-        } catch (_) {
-          document.getElementById("lista-doacoes").innerHTML =
-            `<p class="text-sm text-gray-400 font-inter text-center py-3">Não foi possível carregar.</p>`;
-        }
-      }
-
-      initPerfil();
-    </script>
+    <script src="../js/perfil.js"></script>
   </body>
 </html>
