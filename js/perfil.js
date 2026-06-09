@@ -35,6 +35,17 @@ function mostrarMsg(texto, sucesso) {
   setTimeout(() => el.classList.add("hidden"), 4000);
 }
 
+// extrai mensagem amigável do erro do FastAPI
+// (400 -> detail é string; 422 -> detail é uma lista de erros)
+function msgErro(erro) {
+  if (!erro || !erro.detail) return "Não foi possível salvar.";
+  if (typeof erro.detail === "string") return erro.detail;
+  if (Array.isArray(erro.detail)) {
+    return erro.detail.map((e) => e.msg).join(" | ");
+  }
+  return "Não foi possível salvar.";
+}
+
 function preencherView() {
   const u = getUsuario();
   setText("v-nome", u.nome);
@@ -76,7 +87,6 @@ async function salvarPerfil() {
   const dados = {
     nome: val("f-nome").trim(),
     email: val("f-email").trim(),
-    cpf: val("f-cpf").replace(/\D/g, ""),
     data_nascimento: val("f-data"),
     sexo: val("f-sexo"),
     tipo_sanguineo: val("f-tipo"),
@@ -91,19 +101,28 @@ async function salvarPerfil() {
   try {
     const body = { ...dados };
     if (novaSenha) body.password = novaSenha;
+
     const res = await fetch(API_URL + "/usuarios/me", {
       method: "PUT",
-      headers: authHeader(),
+      headers: {
+        "Content-Type": "application/json",
+        ...authHeader(),
+      },
       body: JSON.stringify(body),
     });
-    if (!res.ok) throw new Error();
+
+    if (!res.ok) {
+      const erro = await res.json().catch(() => ({}));
+      throw new Error(msgErro(erro));
+    }
+
     const atualizado = await res.json();
     localStorage.setItem("usuario", JSON.stringify(atualizado));
     preencherView();
     fecharModal();
     mostrarMsg("Perfil atualizado com sucesso!", true);
-  } catch (_) {
-    mostrarMsg("Não foi possível salvar no servidor.", false);
+  } catch (err) {
+    mostrarMsg(err.message || "Não foi possível salvar no servidor.", false);
   }
 }
 

@@ -38,3 +38,13 @@ class TokenOut(BaseModel):
     access_token: str
     token_type:   str = "bearer"
     user:         UserOut
+
+from typing import Optional
+
+
+class UsuarioUpdate(BaseModel):
+    nome:            Optional[str]   = None
+    email:           Optional[EmailStr] = None
+    sexo:            Optional[str]   = None
+    data_nascimento: Optional[date]  = None
+    tipo_sanguineo:  Optional[str]   = None
